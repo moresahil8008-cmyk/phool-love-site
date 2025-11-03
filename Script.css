@@ -1,0 +1,21 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const song = document.getElementById('love-song');
+    const button = document.getElementById('play-song-btn');
+
+    button.addEventListener('click', () => {
+        if (song.paused) {
+            song.play()
+                .then(() => {
+                    button.textContent = "Song Playing... 🎶";
+                })
+                .catch(error => {
+                    // Fallback alert if browser blocks play
+                    alert("The song requires interaction to start. Please try clicking the button again!");
+                    button.textContent = "Play Our Song ❤️";
+                });
+        } else {
+            song.pause();
+            button.textContent = "Play Our Song ❤️";
+        }
+    });
+});
